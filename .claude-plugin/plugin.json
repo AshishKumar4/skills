@@ -1,0 +1,12 @@
+{
+  "name": "opencode-agent-rules",
+  "skills": [
+    "./skills/root-cause-debug",
+    "./skills/code-quality-audit",
+    "./skills/planning-review",
+    "./skills/review-fix-loop",
+    "./skills/frontend-polish",
+    "./skills/prompt-evaluation",
+    "./skills/test-driven-development"
+  ]
+}
