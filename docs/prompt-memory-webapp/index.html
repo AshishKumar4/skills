@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Prompt Memory</title>
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<aside>
+			<div class="brand">Prompt Memory</div>
+			<button data-view="overview" class="active">Overview</button>
+			<button data-view="phrases">Phrases</button>
+			<button data-view="models">Models</button>
+			<button data-view="standards">Standards</button>
+			<button data-view="prompts">Prompts</button>
+			<button data-view="papers">Papers</button>
+			<button data-view="skills">Installed Skills</button>
+		</aside>
+		<main>
+			<header>
+				<div>
+					<p id="subtitle">Loading...</p>
+					<h1 id="title">Overview</h1>
+				</div>
+				<input id="search" type="search" placeholder="Search prompts, skills, phrases..." />
+			</header>
+			<section id="overview" class="view active"></section>
+			<section id="phrases" class="view"></section>
+			<section id="models" class="view"></section>
+			<section id="standards" class="view"></section>
+			<section id="prompts" class="view"></section>
+			<section id="papers" class="view"></section>
+			<section id="skills" class="view"></section>
+		</main>
+		<script src="./app.js"></script>
+	</body>
+</html>

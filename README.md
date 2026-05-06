@@ -13,6 +13,7 @@ Lets see where this goes
 - `skills/frontend-polish` - UI/UX, screenshots, document viewers, and product polish
 - `skills/prompt-evaluation` - system prompts, tool gating, evals, and agent behavior
 - `skills/test-driven-development` - red-green-refactor and behavior tests
+- `docs/prompt-memory-webapp` - interactive prompt analysis webapp and raw data
 
 ## Install
 
@@ -58,6 +59,22 @@ Existing files are backed up with a timestamped `.backup-*` suffix unless `--for
 ```bash
 ./verify.sh
 ```
+
+## Prompt Analysis Webapp
+
+Preview the prompt-memory analysis locally:
+
+```bash
+python3 -m http.server 8770 --bind 127.0.0.1 --directory docs/prompt-memory-webapp
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8770/
+```
+
+The webapp shell is committed, but `data.json` is intentionally local-only because it can contain raw prompt/transcript data. Generate or copy `docs/prompt-memory-webapp/data.json` locally before previewing.
 
 ## Sync From Installed Config
 
