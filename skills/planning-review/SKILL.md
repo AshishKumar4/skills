@@ -26,9 +26,11 @@ compatibility: opencode
 7. Propose the smallest correct design.
 8. List exact affected areas and what will not change.
 9. Include regression risks and verification plan.
-10. For unclear product/domain decisions, ask one question at a time and provide your recommended answer.
-11. If the answer can be found by exploring code/docs, explore instead of asking.
-12. Stop for approval if implementation was not explicitly authorized.
+10. Define success criteria: what will prove the plan worked.
+11. Self-review the plan as if asked “can you bet $1000 on this?” Revise weak parts before presenting the final plan.
+12. For unclear product/domain decisions, ask one question at a time and provide your recommended answer.
+13. If the answer can be found by exploring code/docs, explore instead of asking.
+14. Stop for approval if implementation was not explicitly authorized.
 
 ## Plan Review Workflow
 

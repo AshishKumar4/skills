@@ -20,12 +20,13 @@ compatibility: opencode
 
 1. Confirm the public interface and the most important behaviors to test.
 2. Identify the correct seam: the place where the real user/caller-observable behavior can be exercised.
-3. Build one vertical slice at a time. Do not write all tests first and all implementation later.
-4. Red: write one failing test for one behavior.
-5. Green: write the minimal production code to pass that test.
-6. Repeat for the next behavior, learning from the previous slice.
-7. Refactor only when green. Run tests after each refactor step.
-8. After the fix/feature, run the original reproduction or broader relevant checks.
+3. Define success criteria before coding.
+4. Build one vertical slice at a time. Do not write all tests first and all implementation later.
+5. Red: write one failing test for one behavior.
+6. Green: write the minimal production code to pass that test.
+7. Repeat for the next behavior, learning from the previous slice.
+8. Refactor only when green. Run tests after each refactor step.
+9. After the fix/feature, run the original reproduction or broader relevant checks.
 
 ## Test Quality Checklist
 

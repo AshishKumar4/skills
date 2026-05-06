@@ -14,9 +14,10 @@ compatibility: opencode
 1. Read current diff, comments, CI logs, target branch, and latest reviewer output.
 2. For each finding classify: agree, disagree, needs clarification, already fixed, intentionally deferred.
 3. If disagreeing, explain evidence: incorrect premise, existing mitigation, disproportionate scope, stale finding, or better follow-up path.
-4. Fix valid issues with minimal, clean, typed changes.
-5. Track carry-forward findings separately from newly introduced findings.
-6. Resolve threads only after fixes are implemented, verified, and pushed if pushing was requested.
+4. Self-challenge the classification before acting. If you would not bet on it, inspect more evidence.
+5. Fix valid issues with minimal, clean, typed changes.
+6. Track carry-forward findings separately from newly introduced findings.
+7. Resolve threads only after fixes are implemented, verified, and pushed if pushing was requested.
 
 ## CI Workflow
 

@@ -24,10 +24,11 @@ compatibility: opencode
 10. Trace the relevant code path and runtime lifecycle end-to-end.
 11. For regressions, compare against last known good behavior and recent commits/PRs.
 12. Identify the concrete failing transition, invariant, code path, state owner, external API behavior, or missing call.
-13. Propose the smallest correct fix. Avoid broad retries, guards, fallbacks, shims, migrations, or compatibility code unless evidence shows they fix the actual failure.
-14. Add a regression test before or with the fix when there is a correct seam. If no correct seam exists, say that architecture is preventing the bug from being locked down.
-15. Define verification: tests, local repro, logs, raw replay, staging/prod evidence, screenshots, or API checks.
-16. Cleanup before declaring done: remove tagged debug logs, throwaway harnesses, prototypes, and temporary instrumentation unless explicitly retained.
+13. Self-challenge the conclusion as if asked “can you bet $1000 on this?” If the evidence is not strong enough, say what is missing.
+14. Propose the smallest correct fix. Avoid broad retries, guards, fallbacks, shims, migrations, or compatibility code unless evidence shows they fix the actual failure.
+15. Add a regression test before or with the fix when there is a correct seam. If no correct seam exists, say that architecture is preventing the bug from being locked down.
+16. Define verification: tests, local repro, logs, raw replay, staging/prod evidence, screenshots, or API checks.
+17. Cleanup before declaring done: remove tagged debug logs, throwaway harnesses, prototypes, and temporary instrumentation unless explicitly retained.
 
 ## Workspace/Sandbox Checklist
 
@@ -54,6 +55,7 @@ If no loop can be built, stop and say what was tried and what artifact/access is
 - Timeline.
 - Confirmed facts vs hypotheses.
 - Root cause and proof.
+- Confidence level and any evidence gap.
 - Targeted fix direction.
 - Verification plan or exact checks run.
 - Residual risk.
