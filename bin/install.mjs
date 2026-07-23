@@ -30,6 +30,7 @@ Options:
   --target=global-opencode             ~/.config/opencode (default)
   --target=project-opencode            ./.opencode in current directory
   --target=global-claude               ~/.claude compatibility target
+  --target=global-codex                ~/.codex compatibility target
   --skills=all                         install all bundled skills (default)
   --skills=name1,name2                 install selected skills
   --no-agents                          install skills only
@@ -71,6 +72,14 @@ function targetInfo(target) {
 			base: path.join(process.env.HOME, ".claude"),
 			agents: path.join(process.env.HOME, ".claude", "CLAUDE.md"),
 			skills: path.join(process.env.HOME, ".claude", "skills"),
+		};
+	}
+	if (target === "global-codex") {
+		return {
+			label: "global Codex-compatible",
+			base: path.join(process.env.HOME, ".codex"),
+			agents: path.join(process.env.HOME, ".codex", "AGENTS.md"),
+			skills: path.join(process.env.HOME, ".codex", "skills"),
 		};
 	}
 	return {
@@ -132,8 +141,9 @@ async function askChoices() {
 		console.log("  1. global OpenCode        ~/.config/opencode");
 		console.log("  2. project OpenCode       ./AGENTS.md + ./.opencode/skills");
 		console.log("  3. global Claude-compatible ~/.claude");
+		console.log("  4. global Codex-compatible  ~/.codex");
 		const targetAnswer = (await rl.question("Target [1]: ")).trim();
-		const target = targetAnswer === "2" ? "project-opencode" : targetAnswer === "3" ? "global-claude" : "global-opencode";
+		const target = { 2: "project-opencode", 3: "global-claude", 4: "global-codex" }[targetAnswer] ?? "global-opencode";
 		const installAgents = !/^n/i.test((await rl.question("Install AGENTS.md/CLAUDE.md? [Y/n]: ")).trim());
 		console.log(`\nSkills:\n  ${skillNames.join("\n  ")}`);
 		const skillAnswer = (await rl.question("Skills to install [all]: ")).trim();

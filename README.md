@@ -13,6 +13,7 @@ Lets see where this goes
 - `skills/frontend-polish` - UI/UX, screenshots, document viewers, and product polish
 - `skills/prompt-evaluation` - system prompts, tool gating, evals, and agent behavior
 - `skills/test-driven-development` - red-green-refactor and behavior tests
+- `skills/no-ai-slop` - edit prose to remove AI-slop patterns while preserving voice, or detect them (vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop) @ `61c21c3`, MIT)
 - `docs/prompt-memory-webapp` - interactive prompt analysis webapp and raw data
 
 ## Install
@@ -42,6 +43,7 @@ node ./bin/install.mjs --list
 node ./bin/install.mjs --verify
 node ./bin/install.mjs --target=project-opencode
 node ./bin/install.mjs --target=global-claude
+node ./bin/install.mjs --target=global-codex
 node ./bin/install.mjs --skills=root-cause-debug,code-quality-audit
 node ./bin/install.mjs --no-agents
 ```
@@ -51,6 +53,7 @@ Targets:
 - `global-opencode` - `~/.config/opencode`
 - `project-opencode` - current repo `AGENTS.md` and `.opencode/skills`
 - `global-claude` - `~/.claude`
+- `global-codex` - `~/.codex`
 
 Existing files are backed up with a timestamped `.backup-*` suffix unless `--force` is used.
 

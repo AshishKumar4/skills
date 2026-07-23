@@ -6,7 +6,12 @@ SRC="${HOME}/.config/opencode"
 
 cp "${SRC}/AGENTS.md" "${ROOT}/AGENTS.md"
 mkdir -p "${ROOT}/skills"
-for name in root-cause-debug code-quality-audit planning-review review-fix-loop frontend-polish prompt-evaluation test-driven-development; do
+for dir in "${ROOT}"/skills/*/; do
+  name="$(basename "${dir}")"
+  if [ ! -d "${SRC}/skills/${name}" ]; then
+    echo "skip ${name} (not installed in ${SRC}/skills)"
+    continue
+  fi
   rm -rf "${ROOT}/skills/${name}"
   cp -R "${SRC}/skills/${name}" "${ROOT}/skills/${name}"
 done

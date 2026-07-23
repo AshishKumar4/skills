@@ -102,3 +102,4 @@ These are my standing instructions for every OpenCode session. Keep the always-l
 - Use `frontend-polish` for UI/UX, visuals, screenshots, document viewers, thumbnails, editors, and product polish.
 - Use `prompt-evaluation` for system prompts, agent behavior, skills, tool/mode gating, prompt bloat, evals, benchmarks, and raw model request/response analysis.
 - Use `test-driven-development` for red-green-refactor, vertical slices, behavior tests, regression tests, and testable interface design.
+- Use `no-ai-slop` for editing prose (posts, docs, READMEs, emails) to strip AI-slop patterns while keeping my voice, and for detecting whether a draft reads as AI.
