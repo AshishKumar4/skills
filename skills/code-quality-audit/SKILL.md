@@ -11,10 +11,10 @@ compatibility: opencode
 
 ## Standards
 
-- Clean, elegant, readable, well typed, maintainable, strictly DRY, non-hacky code.
+- Clean, elegant, readable, well typed, maintainable, readable, composable, well crafted, strictly DRY, non-hacky, 99th percentile code.
 - Prefer source-of-truth schemas, generated/shared types, existing helpers, framework APIs, and shared code paths.
 - No unnecessary bloat, dead code, debug scaffolding, stale comments, redundant wrappers, duplicate state, drift-prone lists, or parallel systems.
-- Comments should be rare and explain non-obvious why/constraints. Remove comments that restate code or sound AI-generated.
+- Comments should be rare and explain non-obvious why/constraints. Flag comments that restate code or sound AI-generated.
 
 ## Architecture Vocabulary
 
@@ -27,19 +27,12 @@ compatibility: opencode
 - **Locality:** change, bugs, and knowledge concentrated in one place.
 - **Leverage:** what callers get because a module hides complexity.
 
-## Deepening Dependency Categories
-
-- **In-process:** pure computation or in-memory state. Usually deepen by merging modules and testing through the new interface directly.
-- **Local-substitutable:** dependencies with local stand-ins, such as in-memory FS or local DB/test DB. Keep the external interface simple; use the stand-in inside tests.
-- **Remote but owned:** internal network/service boundaries. Define a port at the seam only when production and test adapters are both real.
-- **True external:** third-party APIs or SDKs. Inject a typed port/adapter and test with a mock adapter at the boundary.
-
 ## Audit Workflow
 
 1. Inspect current patterns and source-of-truth types/schemas/configs before proposing changes.
-2. Find duplicate logic, duplicate state, redundant wrappers, re-export clutter, stale comments, unsafe casts, and dead paths.
+2. Find duplicate logic, duplicate state, redundant wrappers, re-export clutter, stale comments, unsafe casts, dead paths, unelegant code and solutions, flawed design and logic etc.
 3. Apply the deletion test: if deleting an abstraction and inlining call sites makes code clearer, the abstraction should not exist.
-4. Prefer locality until reuse is real. Centralize only when one policy prevents duplication/drift or creates high leverage.
+4. And on contrary, If generalizing and introducing abstractions can reduce overall code and make code cleaner, more maintainable and understandable, Please do. Such abstractions should be elegant, clean and minimal yet powerful.
 5. Use seams/adapters only at real boundaries: external APIs, SDKs, storage, network calls, UI/backend boundaries, trust boundaries.
 6. Treat the interface as the test surface. If tests must reach past the interface, the module is probably the wrong shape.
 7. Do not expose internal seams only because tests use them. Internal seams can stay private to the implementation.
@@ -53,12 +46,3 @@ compatibility: opencode
 - Deepening opportunities: files, problem, solution, benefits, test impact.
 - What not to change.
 - Verification recommendations.
-
-## Never Do
-
-- Do not split files because they are large unless conceptual complexity is reduced.
-- Do not add narrow interfaces that mirror a large context object.
-- Do not introduce a seam with only one adapter unless there is a concrete second adapter or external boundary.
-- Do not keep old shallow-module tests once behavior is covered through the deepened interface.
-- Do not create new files for tiny helpers without real reuse or boundary value.
-- Do not hide type issues with `any`, broad `unknown`, non-null assertions, or unsafe casts.

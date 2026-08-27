@@ -33,9 +33,3 @@ compatibility: opencode
 3. Plan a targeted polish pass.
 4. Implement using existing product patterns and shared components.
 5. Verify real interactions, screenshots, theme behavior, loading/error/empty states, and responsiveness.
-
-## Never Do
-
-- Do not rebuild the frontend from scratch before studying existing design language.
-- Do not add a second renderer/editor/preview path when the source-of-truth pipeline can be improved.
-- Do not claim visual quality from code inspection alone.

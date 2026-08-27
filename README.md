@@ -18,6 +18,8 @@ Lets see where this goes
 
 ## Install
 
+`AGENTS.md` and the bundled skills in this repository are the source of truth. After changing them, install the updated rules globally:
+
 Interactive install:
 
 ```bash
@@ -78,11 +80,3 @@ http://127.0.0.1:8770/
 ```
 
 The webapp shell is committed, but `data.json` is intentionally local-only because it can contain raw prompt/transcript data. Generate or copy `docs/prompt-memory-webapp/data.json` locally before previewing.
-
-## Sync From Installed Config
-
-If you edit the installed OpenCode config directly, sync it back into this repo:
-
-```bash
-./sync-from-installed.sh
-```

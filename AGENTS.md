@@ -2,8 +2,29 @@
 
 ## Writing/Editing style rules
 
-- Whenever writing textual deliverables on behalf of me, please ensure you write it in my voice and style. and avoid using any AI-generated language patterns.
-- Such patterns can include overly formal language, excessive use of filler words, robotic phrasing, defensive language, overly cautious phrasing or antithesis (eg, "It's not X, It's Y").
+When writing your final responses or describing/explaining me anything, Please be very concise, crystal clear and state everything plainly. Your responses shouldn't be more than 1-2 pages max.
+
+Whenever writing textual deliverables on behalf of me, please ensure you write it in my voice and style. and avoid using any AI-generated language patterns, and instead, follow these rules:
+
+- Please also ensure that you always use the 'anti-slop', 'stop-slop', 'no-ai-slop' and 'humanizer' skills over ANY and ALL content, along with ensuring to use ASD-STE100 Simplified technical english.
+- And follow Zinsser's four principles of quality writing:
+  1. Simplicity
+  2. Brevity
+  3. Clarity
+  4. Humanity
+- This applies to everything: PR/MR titles and descriptions, commit messages, review comments, code comments, docs, chat replies, and summaries.
+
+## Design Judgment
+
+- Before proposing, implementing, or approving a non-trivial feature or API, ask:
+  - Is this the right user-facing feature?
+  - Is the public API the smallest honest expression of that feature?
+  - Are responsibilities at the correct boundary?
+  - Have we overengineered anything?
+  - Can callers understand the API and important invariants without chasing implementation?
+  - Did the implementation add machinery without a demonstrated need?
+  - Does the code preserve the real capability, lifecycle, and concurrency invariants?
+- Prefer a concrete, narrow design over generic machinery for hypothetical future use cases. Add generality only when a real caller or policy requires it.
 
 ## How I Want You To Work
 
@@ -16,7 +37,7 @@
 - If I ask you to continue, go ahead, implement, fix, or build, keep going through implementation, verification, cleanup, and final summary unless I stop you.
 - Ask only when intent, product direction, or compatibility requirements are genuinely unclear. Do not ask avoidable questions when the requirement is clear.
 - Preserve unrelated user changes and dirty worktrees. Do not touch unrelated files.
-- Do not commit, push, rebase, deploy, or create PRs unless I explicitly ask.
+- Do not commit, push, rebase, deploy, create PRs or comment unless I explicitly ask.
 - Use pnpm if the project already uses it, otherwise use bun.
 - Never use npm or yarn.
 
@@ -56,14 +77,11 @@
 
 ## Architecture
 
-- Design and build things with generalizability, scalability, maintainability, and performance in mind.
-- Plan to build abstractions that are minimal, focused, and composable. And Everything should be built with such abstractions over abstracted layers.
-- Build abstractions to be used as primitives and building blocks for other abstractions.
-- These abstractions should be designed to be as minimal as possible while being as powerful and general as possible. 
-- Prefer single sources of truths
+- Prefer one path, not three. Keep a single source of truth.
 - Prefer deep modules: a small stable interface hiding meaningful complexity. Avoid shallow modules that merely pass through the same concepts under new names.
 - Apply the deletion test before adding an abstraction: if removing it and inlining the call sites makes the code clearer, do not add it.
 - Use seams and adapters at real boundaries: external APIs, SDKs, storage, network calls, UI/backend boundaries, and trust boundaries. Do not add adapters between tightly coupled internal functions just for neatness.
+- Optimize for locality until reuse is real; optimize for leverage when one central policy prevents duplicated behavior or drift.
 - Before extracting interfaces, identify what complexity the module will own, what policy it hides, and what callers no longer need to know.
 - Preserve layering boundaries: SDK/client code should not import worker internals, UI should not duplicate backend policy, and lifecycle ownership should not be spread across unrelated layers.
 
@@ -82,7 +100,7 @@
 - For AI reviewer comments, first classify each finding as agree, disagree, needs clarification, already fixed, or intentionally deferred. Do not blindly apply reviewer suggestions.
 - If disagreeing, explain the concrete evidence: incorrect premise, existing mitigation, disproportionate scope, stale comment, or better follow-up path.
 - Review the actual current diff and surrounding code, not just the reviewer summary.
-- Have proper and clear PR descriptions explaining the WHAT, WHY, and HOW of the changes, or ROOT CAUSES, EVIDENCE and REASONING for bug fixes.
+- PR descriptions should explain the user-facing feature and only non-obvious architectural details. Do not narrate the implementation line-by-line. For bug fixes, explain the root cause and evidence.
 
 ## Agent And Prompt Behavior
 
@@ -90,14 +108,3 @@
 - For serious reviews, risky plans, substantial implementations/PRs, prompt changes, or complex investigations, use multiple independent subagents/judges, then validate their findings yourself. Do not blindly trust them.
 - For system prompt changes, avoid prompt bloat. Prefer concise, targeted edits that are gated to actual modes/tools. Do not reference tools that are unavailable.
 - Use judge/eval/subagent results as signals, not truth; filter false positives and validate important claims manually.
-
-## Skills
-
-- Use `root-cause-debug` for production bugs, regressions, workspace/sandbox failures, raw logs, transcripts, request/response dumps, unclear failures, and evidence-first investigations.
-- Use `code-quality-audit` for DRY, architecture, type safety, comments, bloat, dead code, deep/shallow module analysis, and cleanup work.
-- Use `planning-review` for major plans, risky architecture changes, pure planning/no-code requests, plan critiques, and design tradeoffs.
-- Use `review-fix-loop` for PR/MR review comments, AI reviewer triage, CI failures, merge readiness, and review-fix loops.
-- Use `frontend-polish` for UI/UX, visuals, screenshots, document viewers, thumbnails, editors, and product polish.
-- Use `prompt-evaluation` for system prompts, agent behavior, skills, tool/mode gating, prompt bloat, evals, benchmarks, and raw model request/response analysis.
-- Use `test-driven-development` for red-green-refactor, vertical slices, behavior tests, regression tests, and testable interface design.
-- Use `no-ai-slop` for editing prose (posts, docs, READMEs, emails) to strip AI-slop patterns while keeping my voice, and for detecting whether a draft reads as AI.

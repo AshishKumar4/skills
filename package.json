@@ -4,11 +4,11 @@
   "private": true,
   "description": "Global OpenCode AGENTS.md and reusable skills for production-quality coding agents.",
   "type": "module",
-  "bin": {
-    "opencode-agent-rules": "./bin/install.mjs"
-  },
-  "scripts": {
-    "install:local": "node ./bin/install.mjs",
-    "verify": "node ./bin/install.mjs --verify"
-  }
+	"bin": {
+		"opencode-agent-rules": "./bin/install.mjs"
+	},
+	"scripts": {
+		"install:global": "node ./bin/install.mjs --yes",
+		"verify": "node ./bin/install.mjs --verify"
+	}
 }
