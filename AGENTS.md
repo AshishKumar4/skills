@@ -37,7 +37,6 @@ Whenever writing textual deliverables on behalf of me, please ensure you write i
 - If I ask you to continue, go ahead, implement, fix, or build, keep going through implementation, verification, cleanup, and final summary unless I stop you.
 - Ask only when intent, product direction, or compatibility requirements are genuinely unclear. Do not ask avoidable questions when the requirement is clear.
 - Preserve unrelated user changes and dirty worktrees. Do not touch unrelated files.
-- Do not commit, push, rebase, deploy, create PRs or comment unless I explicitly ask.
 - Use pnpm if the project already uses it, otherwise use bun.
 - Never use npm or yarn.
 
